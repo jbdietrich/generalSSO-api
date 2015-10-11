@@ -1,7 +1,9 @@
 var saml20      = require('saml').Saml20,
     pd          = require('pretty-data').pd,
-    templates   = require('../lib/templates'),
-    util        = require('../lib/util');
+    util        = require('../lib/util'),
+    ejs         = require('ejs'),
+    fs          = require('fs'),
+    path        = require('path');
 
 exports.generate = function(req, res){
 
@@ -25,7 +27,10 @@ exports.generate = function(req, res){
   var destination = 'https://' + util.handleEmpty(req.body.meta.destination) + '/access/saml';
   var RelayState = util.handleEmpty(req.body.meta.relay_state) || ' ';
 
-  var response = templates.response({
+  var templateFile = fs.readFileSync(path.join(__dirname, '../templates', 'response.ejs'));
+  var responseTemplate = ejs.compile(templateFile.toString());
+
+  var response = responseTemplate({
     id:             util.handleEmpty(req.body.meta.response_id),
     instant:        util.handleEmpty(req.body.meta.issue_instant),
     inResponseTo:   false, // todo: build out request parsing
