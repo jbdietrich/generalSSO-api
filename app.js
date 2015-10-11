@@ -20,7 +20,6 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.post('/jwt', jwt.generate);
-app.get('/saml', saml.display);
 app.post('/saml', saml.generate);
 app.get('/logout', logout.display);
 

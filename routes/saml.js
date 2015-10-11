@@ -1,14 +1,7 @@
 var saml20      = require('saml').Saml20,
     pd          = require('pretty-data').pd,
-    fs          = require('fs'),
-    path        = require('path'),
     templates   = require('../lib/templates'),
     util        = require('../lib/util');
-
-exports.display = function(req, res){
-   res.render('saml', { SAMLRequest: req.query.SAMLRequest || '',
-                        RelayState:  req.query.RelayState  || ''});
-};
 
 exports.generate = function(req, res){
 
