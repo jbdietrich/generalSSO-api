@@ -5,7 +5,7 @@ var express    = require('express'),
     saml       = require('./routes/saml'),
     http       = require('http');
 
-var app = express();
+var app = exports.app = express();
 
 app.set('port', process.env.PORT || 3000);
 app.use(logger());
