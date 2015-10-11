@@ -19,10 +19,6 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.get('/', function(req, res){
-  res.redirect(301, '/jwt');
-});
-app.get('/jwt', jwt.display);
 app.post('/jwt', jwt.generate);
 app.get('/saml', saml.display);
 app.post('/saml', saml.generate);
