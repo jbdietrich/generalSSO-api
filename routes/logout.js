@@ -6,4 +6,4 @@ exports.display = function(req, res){
                   origin: (req.headers['x-forwarded-for'] || '').split(',')[0] || req.connection.remoteAddress };
 
   res.render('logout', { request: JSON.stringify(request, undefined, 2) });
-}
+};

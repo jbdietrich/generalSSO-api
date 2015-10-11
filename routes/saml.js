@@ -8,7 +8,7 @@ var saml20      = require('saml').Saml20,
 exports.display = function(req, res){
    res.render('saml', { SAMLRequest: req.query.SAMLRequest || '',
                         RelayState:  req.query.RelayState  || ''});
-}
+};
 
 exports.generate = function(req, res){
 
@@ -48,4 +48,4 @@ exports.generate = function(req, res){
                            RelayState:        RelayState,
                            SAMLResponse:      util.b64Response(response)
   }));
-}
+};
